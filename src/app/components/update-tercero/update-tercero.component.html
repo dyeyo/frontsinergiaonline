@@ -1,0 +1,165 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-title">
+                    <h2>Editar tercero</h2>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="formTerceros">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Tipo de
+                                        idetificación</label>
+                                    <select formControlName="tipo_identificacion" class="form-select"
+                                        aria-label="Default select example">
+                                        <option value="Cedula">Cedula</option>
+                                        <option value="Tarjeta de indentidad">Tarjeta de indentidad</option>
+                                        <option value="Pasaporte">Pasaporte</option>
+                                    </select>
+                                    <div *ngFor="let error of errorMessages.Tipo_identificacion">
+                                        <div
+                                            *ngIf="tipo_identificacion.hasError(error.type) && (tipo_identificacion.dirty || tipo_identificacion.touched)">
+                                            <small class="error-message text-danger">
+                                                {{error.message}}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="numero_identificacion" class="form-label">Numero de documento</label>
+                                    <input formControlName="numero_identificacion" type="text" class="form-control"
+                                        id="numero_identificacion" placeholder="Numero de documento">
+                                    <div *ngFor="let error of errorMessages.Numero_identificacion">
+                                        <div
+                                            *ngIf="numero_identificacion.hasError(error.type) && (numero_identificacion.dirty || numero_identificacion.touched)">
+                                            <small class="error-message text-danger">
+                                                {{error.message}}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Primer nombre</label>
+                                    <input formControlName="nombre" name="nombre" type="text" class="form-control"
+                                        id="nombre" placeholder="Primer nombre">
+                                    <div *ngFor="let error of errorMessages.Nombre">
+                                        <div *ngIf="nombre.hasError(error.type) && (nombre.dirty || nombre.touched)">
+                                            <small class="error-message text-danger">
+                                                {{error.message}}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nombre2" class="form-label">Segundo nombre</label>
+                                    <input formControlName="nombre2" name="nombre2" type="text" class="form-control"
+                                        id="nombre2" placeholder="Segundo nombre">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="apellido1" class="form-label">Primer Apellido</label>
+                                    <input formControlName="apellido1" name="apellido1" type="text" class="form-control"
+                                        id="apellido1" placeholder="Primer Apellido">
+                                    <div *ngFor="let error of errorMessages.Apellido1">
+                                        <div
+                                            *ngIf="apellido1.hasError(error.type) && (apellido1.dirty || apellido1.touched)">
+                                            <small class="error-message text-danger">
+                                                {{error.message}}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="apellido2" class="form-label">Segundo Apellido</label>
+                                    <input formControlName="apellido2" name="apellido2" type="text" class="form-control"
+                                        id="apellido2" placeholder="Segundo Apellido">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="departamento_id" class="form-label">Departamento</label>
+                                    <select formControlName="departamento_id" name="departamento_id" class="form-select"
+                                        aria-label="Default select example">
+                                        <option *ngFor="let item of departamentos" [value]="item.id">{{item.nombre}}
+                                        </option>
+                                    </select>
+                                    <div *ngFor="let error of errorMessages.Departamento_id">
+                                        <div
+                                            *ngIf="departamento_id.hasError(error.type) && (departamento_id.dirty || departamento_id.touched)">
+                                            <small class="error-message text-danger">
+                                                {{error.message}}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="municipio_id" class="form-label">Municipio</label>
+                                    <select formControlName="municipio_id" name="municipio_id" class="form-select"
+                                        aria-label="Default select example">
+                                        <option *ngFor="let c of ciudades" [value]="c.id">{{c.nombre}}</option>
+                                    </select>
+                                    <div *ngFor="let error of errorMessages.Municipio_id">
+                                        <div
+                                            *ngIf="municipio_id.hasError(error.type) && (municipio_id.dirty || municipio_id.touched)">
+                                            <small class="error-message text-danger">
+                                                {{error.message}}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="tipo_contribuyente_id" class="form-label">Tipo contributor</label>
+                                    <select formControlName="tipo_contribuyente_id" name="tipo_contribuyente_id"
+                                        class="form-select" aria-label="Default select example">
+                                        <option *ngFor="let item of contributor" [value]="item.id">{{item.nombre}}
+                                        </option>
+                                    </select>
+                                    <div *ngFor="let error of errorMessages.Tipo_contribuyente_id">
+                                        <div
+                                            *ngIf="tipo_contribuyente_id.hasError(error.type) && (tipo_contribuyente_id.dirty || tipo_contribuyente_id.touched)">
+                                            <small class="error-message text-danger">
+                                                {{error.message}}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary" (click)="save()"
+                                    [disabled]="formTerceros.invalid">Guardar</button>
+                                <button class="btn btn-danger">Cancelar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
